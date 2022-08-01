@@ -2,13 +2,38 @@
 <html>
 <head>
 
+<meta charset="utf-8">
+<title>Событие onclick</title>
+<script>
+   function parseUser() {
+    var str = document.getElementById("id1").value;
+    var status = document.getElementById("status1");
+    var re = /^[A-Za-z\u0410-\u044F\u0401\u0451]{2,};[A-Za-z\u0410-\u044F\u0401\u0451]{2,};[A-Za-z\u0410-\u044F\u0401\u0451]+$/i;
+    if (re.test(str)) status.reg = "Ok";
+      else status.reg = "Неверный формат ввода";
+    if(isEmpty(str)) status.reg = "Поле пустое";
+    parseLastname(str);
+   }
+   function isEmpty(str){
+    return (str == null) || (str.length == 0);
+   }
+   function parseLastname(str){
+   	var re = /^[A-Za-z\u0410-\u044F\u0401\u0451]{2,};/i;
+    return re.exec(str);
+   }
+  </script>
+
+
 <div>
   <label for="id1">Имя;Фамилия;Должность:</label>
-  <p><input id="id1" type="text" name="id1"></p>
+  <p>
+  <input id="id1" type="text" name="id1"><span id="status1"></span>
+  </p>
 </div>
 <div>
   <label for="id2">Фамилия И. – Должность:</label>
-  <p><input id="id2" type="text" name="id2"></p>
+  <p><input disabled id="id2" type="text" name="id2"></p>
+  
 </div>
 <button id="id3">Press</button>
  
